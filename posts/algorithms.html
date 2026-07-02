@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Big-O Notation Explained — A CSE Student's Complete Guide | Abu Hossain</title>
+  <meta name="description" content="Understand Big-O notation, time complexity, and space complexity with simple examples in Python and C++. A complete guide for CSE students and beginners." />
+  <meta name="author" content="Md Abu Hossain Mohalder" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://hossain048.github.io/seolab/posts/algorithms.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Big-O Notation Explained — A CSE Student's Complete Guide" />
+  <meta property="og:description" content="Learn Big-O notation, time complexity and space complexity with real Python and C++ examples." />
+  <meta property="og:url" content="https://hossain048.github.io/seolab/posts/algorithms.html" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Big-O Notation Explained — A CSE Student's Complete Guide",
+    "description": "Understand Big-O notation, time complexity, and space complexity with simple examples in Python and C++.",
+    "url": "https://hossain048.github.io/seolab/posts/algorithms.html",
+    "datePublished": "2026-06-20",
+    "dateModified": "2026-06-20",
+    "author": {
+      "@type": "Person",
+      "name": "Md Abu Hossain Mohalder",
+      "url": "https://hossain048.github.io/seolab/about.html"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Md Abu Hossain Mohalder"
+    },
+    "keywords": ["Big-O notation", "time complexity", "algorithms", "CSE", "data structures"],
+    "inLanguage": "en"
+  }
+  </script>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="../index.html" class="logo">
+      <span class="logo-icon">{ }</span>
+      <span class="logo-text">Abu Hossain</span>
+    </a>
+    <nav aria-label="Main Navigation">
+      <ul class="nav-list">
+        <li><a href="../index.html" class="nav-link">Home</a></li>
+        <li><a href="algorithms.html" class="nav-link active">Algorithms</a></li>
+        <li><a href="machine-learning.html" class="nav-link">ML</a></li>
+        <li><a href="web-development.html" class="nav-link">Web Dev</a></li>
+        <li><a href="../about.html" class="nav-link">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="article-hero">
+    <div class="container">
+      <div class="post-tag-hero">Algorithms &amp; Data Structures</div>
+      <h1>Big-O Notation Explained —<br>A CSE Student's Complete Guide</h1>
+      <p class="article-meta">By <strong>Md Abu Hossain Mohalder</strong> · <time datetime="2026-06-20">June 20, 2026</time> · 6 min read</p>
+    </div>
+  </div>
+
+  <div class="breadcrumb container">
+    <a href="../index.html">Home</a> › <a href="algorithms.html">Algorithms</a> › Big-O Notation
+  </div>
+
+  <article class="article-body">
+    <a href="../index.html" class="back-link">← Back to Home</a>
+
+    <h2>What is Big-O Notation?</h2>
+    <p>Big-O notation describes the <strong>worst-case time or space complexity</strong> of an algorithm as the input size <code>n</code> grows. It tells you how fast the runtime increases — not the exact time, but the growth rate.</p>
+    <blockquote>Think of it this way: if you double the input, does the runtime double? Square? Stay the same? Big-O answers that question.</blockquote>
+
+    <h2>The Most Common Complexities</h2>
+    <h3>O(1) — Constant Time</h3>
+    <p>The operation takes the same time regardless of input size. Accessing an array element by index is O(1).</p>
+    <pre><code>def get_first(arr):
+    return arr[0]  # Always one operation, O(1)</code></pre>
+
+    <h3>O(log n) — Logarithmic Time</h3>
+    <p>Halves the problem each step. Binary search is the classic example.</p>
+    <pre><code>def binary_search(arr, target):
+    left, right = 0, len(arr) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if arr[mid] == target: return mid
+        elif arr[mid] < target: left = mid + 1
+        else: right = mid - 1
+    return -1</code></pre>
+
+    <h3>O(n) — Linear Time</h3>
+    <p>Time grows directly with input. A simple loop through an array is O(n).</p>
+    <pre><code>def find_max(arr):
+    max_val = arr[0]
+    for x in arr:        # n iterations
+        if x > max_val:
+            max_val = x
+    return max_val</code></pre>
+
+    <h3>O(n²) — Quadratic Time</h3>
+    <p>A loop inside a loop. Bubble sort is O(n²) — avoid for large inputs.</p>
+    <pre><code>def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n):          # O(n)
+        for j in range(n-i-1): # O(n)
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]</code></pre>
+
+    <h2>Quick Reference Table</h2>
+    <ul>
+      <li><code>O(1)</code> — Hash table lookup, array access</li>
+      <li><code>O(log n)</code> — Binary search, balanced BST operations</li>
+      <li><code>O(n)</code> — Linear search, single loop</li>
+      <li><code>O(n log n)</code> — Merge sort, heap sort</li>
+      <li><code>O(n²)</code> — Bubble sort, nested loops</li>
+      <li><code>O(2ⁿ)</code> — Recursive Fibonacci (naive)</li>
+    </ul>
+
+    <h2>Why Does Big-O Matter for CSE Students?</h2>
+    <p>Every technical interview at FAANG and top companies tests algorithmic thinking. Understanding Big-O lets you:</p>
+    <ul>
+      <li>Choose the right data structure for a problem</li>
+      <li>Predict performance before writing code</li>
+      <li>Optimize existing solutions systematically</li>
+      <li>Communicate trade-offs clearly in interviews</li>
+    </ul>
+
+    <h2>Related Posts</h2>
+    <ul>
+      <li><a href="machine-learning.html">Building a Phishing Email Detector with Python &amp; Scikit-learn</a></li>
+      <li><a href="web-development.html">SEO for Developers — What Every CSE Student Should Know</a></li>
+      <li><a href="../about.html">About the Author</a></li>
+    </ul>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© 2026 Md Abu Hossain Mohalder · CSE, University of Barishal</p>
+    <nav aria-label="Footer Navigation">
+      <a href="../index.html">Home</a>
+      <a href="../about.html">About</a>
+      <a href="../sitemap.xml">Sitemap</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>

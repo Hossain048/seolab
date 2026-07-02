@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SEO for Developers — What Every CSE Student Should Know | Abu Hossain</title>
+  <meta name="description" content="A developer's guide to SEO: title tags, meta descriptions, structured data, Core Web Vitals, and more. Essential SEO knowledge for every computer science student." />
+  <meta name="author" content="Md Abu Hossain Mohalder" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://hossain048.github.io/seolab/posts/web-development.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="SEO for Developers — What Every CSE Student Should Know" />
+  <meta property="og:description" content="A developer's guide to SEO: title tags, meta descriptions, structured data, Core Web Vitals, and more." />
+  <meta property="og:url" content="https://hossain048.github.io/seolab/posts/web-development.html" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "SEO for Developers — What Every CSE Student Should Know",
+    "description": "A developer's guide to SEO: title tags, meta descriptions, structured data, Core Web Vitals, and more.",
+    "url": "https://hossain048.github.io/seolab/posts/web-development.html",
+    "datePublished": "2026-06-10",
+    "dateModified": "2026-06-10",
+    "author": {
+      "@type": "Person",
+      "name": "Md Abu Hossain Mohalder",
+      "url": "https://hossain048.github.io/seolab/about.html"
+    },
+    "keywords": ["SEO for developers", "technical SEO", "meta tags", "Core Web Vitals", "schema markup", "CSE student"],
+    "inLanguage": "en"
+  }
+  </script>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="../index.html" class="logo">
+      <span class="logo-icon">{ }</span>
+      <span class="logo-text">Abu Hossain</span>
+    </a>
+    <nav aria-label="Main Navigation">
+      <ul class="nav-list">
+        <li><a href="../index.html" class="nav-link">Home</a></li>
+        <li><a href="algorithms.html" class="nav-link">Algorithms</a></li>
+        <li><a href="machine-learning.html" class="nav-link">ML</a></li>
+        <li><a href="web-development.html" class="nav-link active">Web Dev</a></li>
+        <li><a href="../about.html" class="nav-link">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="article-hero">
+    <div class="container">
+      <div class="post-tag-hero">Web Development</div>
+      <h1>SEO for Developers —<br>What Every CSE Student Should Know</h1>
+      <p class="article-meta">By <strong>Md Abu Hossain Mohalder</strong> · <time datetime="2026-06-10">June 10, 2026</time> · 7 min read</p>
+    </div>
+  </div>
+
+  <div class="breadcrumb container">
+    <a href="../index.html">Home</a> › <a href="web-development.html">Web Development</a> › SEO for Developers
+  </div>
+
+  <article class="article-body">
+    <a href="../index.html" class="back-link">← Back to Home</a>
+
+    <h2>Why Should a CSE Student Care About SEO?</h2>
+    <p>When you build a web application, you want people to find it. Search Engine Optimization (SEO) is the discipline of making your website visible in Google and other search engines — for free, through organic results. As a developer, you control the technical layer that makes or breaks SEO.</p>
+    <blockquote>Any developer who understands both code and SEO is 10× more valuable than one who knows only one.</blockquote>
+
+    <h2>1. Title Tags — The Most Important On-Page Element</h2>
+    <p>The <code>&lt;title&gt;</code> tag appears as the clickable headline in Google search results. Rules:</p>
+    <ul>
+      <li>Keep it under <strong>60 characters</strong></li>
+      <li>Put the <strong>primary keyword first</strong></li>
+      <li>Put the brand/site name <strong>last</strong></li>
+      <li>Every page needs a <strong>unique</strong> title</li>
+    </ul>
+    <pre><code>&lt;!-- Bad --&gt;
+&lt;title&gt;My Website&lt;/title&gt;
+
+&lt;!-- Good --&gt;
+&lt;title&gt;Big-O Notation Guide for Beginners | Abu Hossain Blog&lt;/title&gt;</code></pre>
+
+    <h2>2. Meta Description — Control Your SERP Snippet</h2>
+    <p>Not a direct ranking factor, but it controls your search result description. A good meta description boosts click-through rate (CTR).</p>
+    <pre><code>&lt;meta name="description"
+  content="Learn Big-O notation with Python examples.
+  A complete guide for CSE students covering O(1) to O(n²)." /&gt;</code></pre>
+
+    <h2>3. Heading Structure — One H1, Logical H2/H3</h2>
+    <p>Search engines use headings to understand page structure. Rules: one <code>&lt;h1&gt;</code> per page (your main title with primary keyword), then <code>&lt;h2&gt;</code> for major sections and <code>&lt;h3&gt;</code> for subsections.</p>
+
+    <h2>4. Schema Markup — Talk Directly to Google</h2>
+    <p>JSON-LD structured data tells Google what your content <em>is</em>, not just what it says. For a blog post:</p>
+    <pre><code>&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Your Post Title",
+  "datePublished": "2026-06-10",
+  "author": { "@type": "Person", "name": "Your Name" }
+}
+&lt;/script&gt;</code></pre>
+
+    <h2>5. Core Web Vitals — Performance = Ranking</h2>
+    <p>Google uses three user experience metrics as ranking factors:</p>
+    <ul>
+      <li><strong>LCP (Largest Contentful Paint)</strong> — page loads fast, target &lt;2.5s</li>
+      <li><strong>CLS (Cumulative Layout Shift)</strong> — no jumping content, target &lt;0.1</li>
+      <li><strong>INP (Interaction to Next Paint)</strong> — UI responds fast, target &lt;200ms</li>
+    </ul>
+
+    <h2>6. Sitemap.xml &amp; Robots.txt</h2>
+    <p>A <code>sitemap.xml</code> lists all your important pages so Google can discover them. A <code>robots.txt</code> tells crawlers which pages to skip. Both live at your domain root.</p>
+
+    <h2>Quick Checklist for Any Web Project</h2>
+    <ul>
+      <li>✅ Unique, keyword-rich title tag on every page</li>
+      <li>✅ Meta description (150–160 chars) on every page</li>
+      <li>✅ Single H1 per page, logical heading hierarchy</li>
+      <li>✅ ALT text on every image</li>
+      <li>✅ Descriptive, clean URLs (no <code>?id=123</code>)</li>
+      <li>✅ HTTPS enabled</li>
+      <li>✅ Mobile-friendly (viewport meta tag)</li>
+      <li>✅ Sitemap.xml submitted to Google Search Console</li>
+      <li>✅ Schema markup (BlogPosting, Person, etc.)</li>
+      <li>✅ Core Web Vitals passing (check PageSpeed Insights)</li>
+    </ul>
+
+    <h2>Related Posts</h2>
+    <ul>
+      <li><a href="algorithms.html">Big-O Notation Explained — A CSE Student's Complete Guide</a></li>
+      <li><a href="machine-learning.html">Building a Phishing Email Detector with Python &amp; Scikit-learn</a></li>
+      <li><a href="../about.html">About the Author</a></li>
+    </ul>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© 2026 Md Abu Hossain Mohalder · CSE, University of Barishal</p>
+    <nav aria-label="Footer Navigation">
+      <a href="../index.html">Home</a>
+      <a href="../about.html">About</a>
+      <a href="../sitemap.xml">Sitemap</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Building a Phishing Email Detector with Python & ML | Abu Hossain</title>
+  <meta name="description" content="Step-by-step guide to building a phishing email detection model using Python, Scikit-learn, and NLP feature engineering. Includes code, dataset tips, and evaluation metrics." />
+  <meta name="author" content="Md Abu Hossain Mohalder" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://hossain048.github.io/seolab/posts/machine-learning.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Building a Phishing Email Detector with Python & ML" />
+  <meta property="og:description" content="Step-by-step guide: phishing email detection with Python, Scikit-learn, and NLP." />
+  <meta property="og:url" content="https://hossain048.github.io/seolab/posts/machine-learning.html" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Building a Phishing Email Detector with Python & Scikit-learn",
+    "description": "Step-by-step guide to building a phishing email detection model using Python, Scikit-learn, and NLP feature engineering.",
+    "url": "https://hossain048.github.io/seolab/posts/machine-learning.html",
+    "datePublished": "2026-06-15",
+    "dateModified": "2026-06-15",
+    "author": {
+      "@type": "Person",
+      "name": "Md Abu Hossain Mohalder",
+      "url": "https://hossain048.github.io/seolab/about.html"
+    },
+    "keywords": ["phishing detection", "machine learning", "Python", "NLP", "email classification", "Scikit-learn"],
+    "inLanguage": "en"
+  }
+  </script>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="../index.html" class="logo">
+      <span class="logo-icon">{ }</span>
+      <span class="logo-text">Abu Hossain</span>
+    </a>
+    <nav aria-label="Main Navigation">
+      <ul class="nav-list">
+        <li><a href="../index.html" class="nav-link">Home</a></li>
+        <li><a href="algorithms.html" class="nav-link">Algorithms</a></li>
+        <li><a href="machine-learning.html" class="nav-link active">ML</a></li>
+        <li><a href="web-development.html" class="nav-link">Web Dev</a></li>
+        <li><a href="../about.html" class="nav-link">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="article-hero">
+    <div class="container">
+      <div class="post-tag-hero">Machine Learning</div>
+      <h1>Building a Phishing Email Detector<br>with Python &amp; Scikit-learn</h1>
+      <p class="article-meta">By <strong>Md Abu Hossain Mohalder</strong> · <time datetime="2026-06-15">June 15, 2026</time> · 8 min read</p>
+    </div>
+  </div>
+
+  <div class="breadcrumb container">
+    <a href="../index.html">Home</a> › <a href="machine-learning.html">Machine Learning</a> › Phishing Email Detector
+  </div>
+
+  <article class="article-body">
+    <a href="../index.html" class="back-link">← Back to Home</a>
+
+    <h2>Introduction</h2>
+    <p>Phishing emails are one of the most common cybersecurity threats. In this post, I walk through building a <strong>binary email classifier</strong> that distinguishes phishing emails from legitimate ones — a real project I worked on for my B.Sc. thesis at the University of Barishal.</p>
+    <blockquote>The model achieves over 97% accuracy on a 39,000+ email dataset using TF-IDF features and a Random Forest classifier.</blockquote>
+
+    <h2>Step 1 — Dataset Collection</h2>
+    <p>Good data is the foundation. I used the <strong>CEAS 2008 dataset</strong> (39,154 emails — a well-known benchmark in academic phishing research). Key points when building your dataset:</p>
+    <ul>
+      <li>Balance classes — equal phishing vs. legitimate samples</li>
+      <li>Use real-world sources: Enron corpus for legitimate, SpamAssassin for spam</li>
+      <li>Document your sources for reproducibility</li>
+    </ul>
+
+    <h2>Step 2 — Feature Engineering</h2>
+    <p>Raw email text needs to be converted to numerical features. Two main approaches:</p>
+    <h3>Textual Features (TF-IDF)</h3>
+    <pre><code>from sklearn.feature_extraction.text import TfidfVectorizer
+
+vectorizer = TfidfVectorizer(
+    max_features=5000,
+    ngram_range=(1, 2),   # unigrams + bigrams
+    stop_words='english'
+)
+X = vectorizer.fit_transform(email_texts)</code></pre>
+
+    <h3>Stylometric Features</h3>
+    <p>Beyond bag-of-words, stylometric features capture writing style — useful for detecting AI-generated phishing:</p>
+    <ul>
+      <li>Average sentence length</li>
+      <li>Type-token ratio (lexical diversity)</li>
+      <li>URL count, exclamation mark count</li>
+      <li>Presence of urgency words ("urgent", "verify immediately")</li>
+    </ul>
+
+    <h2>Step 3 — Model Training</h2>
+    <pre><code>from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import classification_report
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
+
+model = RandomForestClassifier(n_estimators=100, random_state=42)
+model.fit(X_train, y_train)
+
+y_pred = model.predict(X_test)
+print(classification_report(y_test, y_pred))</code></pre>
+
+    <h2>Step 4 — Evaluation</h2>
+    <p>Accuracy alone is misleading in cybersecurity. Always check:</p>
+    <ul>
+      <li><strong>Precision</strong>: Of predicted phishing, how many were actually phishing?</li>
+      <li><strong>Recall</strong>: Of all actual phishing, how many did we catch?</li>
+      <li><strong>F1-Score</strong>: Harmonic mean of precision and recall</li>
+      <li><strong>ROC-AUC</strong>: Overall discriminative ability</li>
+    </ul>
+
+    <h2>Key Takeaway</h2>
+    <p>Machine learning can detect phishing emails effectively — but the real challenge comes when emails are AI-generated. Traditional models trained on human-written phishing struggle with LLM-generated attacks. That detection gap is exactly what my B.Sc. thesis investigates.</p>
+
+    <h2>Related Posts</h2>
+    <ul>
+      <li><a href="algorithms.html">Big-O Notation Explained — A CSE Student's Complete Guide</a></li>
+      <li><a href="web-development.html">SEO for Developers — What Every CSE Student Should Know</a></li>
+      <li><a href="../about.html">About the Author</a></li>
+    </ul>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© 2026 Md Abu Hossain Mohalder · CSE, University of Barishal</p>
+    <nav aria-label="Footer Navigation">
+      <a href="../index.html">Home</a>
+      <a href="../about.html">About</a>
+      <a href="../sitemap.xml">Sitemap</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
